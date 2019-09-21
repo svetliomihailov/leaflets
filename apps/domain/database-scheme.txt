@@ -1,0 +1,45 @@
+Table users {
+  id int [pk, increment]
+  username varchar [not null, unique]
+  password_hash varchar [not null]
+  password_salt varchar [not null]
+}
+
+Table games {
+  code varchar [pk, not null, unique]
+  codename varchar [not null]
+  team_size tinyint [not null]
+  leaflets_per_player tinyint [not null]
+  seconds_per_turn tinyint [not null]
+  user_id int [ref: > users.id, note: "Game admin user"]
+  created_at datetime [not null]
+}
+
+Table players {
+  id int [pk, increment]
+  user_id int [ref: > users.id, not null]
+  game varchar [ref: > games.code, not null]
+  team_id int [ref: > teams.id]
+  order int [note: "Unique in the scope of the game"]
+}
+
+Table teams {
+  id int [pk, increment]
+  name varchar [default: '', not null]
+  game varchar [ref: > games.code, not null]
+  score tinyint [default: 0, not null]
+}
+
+Table words {
+  id int [pk, increment]
+  user_id int [ref: > users.id, not null]
+  word varchar [not null]
+  description varchar [default: '', not null]
+  used boolean [default: false, not null]
+}
+
+Table leaflets {
+  player_id int [ref: > players.id, not null]
+  word_id int [ref: > words.id, not null]
+}
+

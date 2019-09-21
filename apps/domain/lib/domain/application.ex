@@ -1,4 +1,4 @@
-defmodule Server.Application do
+defmodule Domain.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -7,14 +7,13 @@ defmodule Server.Application do
 
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Server.Worker.start_link(arg)
-      # {Server.Worker, arg}
-      {Plug.Cowboy, scheme: :http, plug: Server.Router, options: [port: 4001]}
+      # Starts a worker by calling: Domain.Worker.start_link(arg)
+      {Domain.Repo, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Server.Supervisor]
+    opts = [strategy: :one_for_one, name: Domain.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end
