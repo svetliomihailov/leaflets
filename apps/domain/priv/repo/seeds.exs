@@ -14,8 +14,10 @@
 {:ok, _game} =
   Domain.Game.create(%{
     gamemaster_id: user.id,
-    codename: "Game"
+    codename: "Game",
     team_size: 2,
     leaflets_per_player: 5,
     seconds_per_turn: 60
   })
+
+{:ok, _team} = Domain.Team.create(%{name: "Lemon sheperd", score: 0})
