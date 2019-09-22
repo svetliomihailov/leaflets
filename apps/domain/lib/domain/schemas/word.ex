@@ -7,6 +7,7 @@ defmodule Domain.Schemas.Word do
 
   schema "words" do
     belongs_to(:user, User)
+
     field(:spelling, :string)
     field(:description, :string, default: "")
     field(:times_used, :integer, default: 0)
@@ -20,5 +21,4 @@ defmodule Domain.Schemas.Word do
     |> validate_required([:spelling, :times_used])
     |> assoc_constraint(:user)
   end
-
 end
