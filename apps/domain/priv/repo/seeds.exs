@@ -40,3 +40,9 @@
     user_id: jerry.id,
     game_id: game.id
   })
+
+{:ok, _leaflet} = Domain.Leaflet.create(%{game_id: game.id, word: "orange"})
+{:ok, _leaflet} = Domain.Leaflet.create(%{game_id: game.id, word: "apple"})
+{:ok, _leaflet} = Domain.Leaflet.create(%{game_id: game.id, word: "pear"})
+{:ok, _leaflet} = Domain.Leaflet.create(%{game_id: game.id, word: "kiwi"})
+{:ok, _leaflet} = Domain.Leaflet.create(%{game_id: game.id, word: "lemon"})
