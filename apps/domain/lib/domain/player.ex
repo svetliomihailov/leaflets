@@ -1,5 +1,5 @@
 defmodule Domain.Player do
-  alias Domain.Schemas.{User, Player}
+  alias Domain.Schemas.Player
   alias Domain.Repo
 
   def create(params) do

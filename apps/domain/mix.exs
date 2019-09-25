@@ -30,19 +30,19 @@ defmodule Domain.MixProject do
       {:ecto, "~> 3.2.0"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:argon2_elixir, "~> 2.0"},
+      {:argon2_elixir, "~> 2.0"}
     ]
   end
 
   defp aliases do
     [
       "ecto.setup": [
-        "ecto.create -r Domain.Repo",
-        "ecto.migrate -r Domain.Repo",
+        "ecto.create",
+        "ecto.migrate",
         "run priv/repo/seeds.exs"
       ],
-      "ecto.reset": ["ecto.drop -r Domain.Repo", "ecto.setup"],
-      test: ["ecto.create --quiet -r Domain.Repo", "ecto.migrate -r Domain.Repo", "test"]
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end

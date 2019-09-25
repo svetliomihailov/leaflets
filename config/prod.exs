@@ -1,8 +1,8 @@
 import Config
+config :domain, :ecto_repos, [Domain.Repo]
 
 config :domain, Domain.Repo,
-  ecto_repos: [],
   database: "domain_production",
-  hostname: "localhost",
-  username: "postgres",
-  password: "postgres"
+  hostname: System.get_env("DOMAIN_DB_HOST"),
+  username: System.get_env("DOMAIN_DB_USERNAME"),
+  password: System.get_env("DOMAIN_DB_PASSWORD")
